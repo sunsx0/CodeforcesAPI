@@ -99,7 +99,7 @@ namespace CodeforcesAPI.Methods
             if (from   != 1)    p["from"]   = from;
             if (count  != -1)   p["count"]  = count;
 
-            return await SendWebRequest<Submission[]>("standings", p);
+            return await SendWebRequest<Submission[]>("status", p);
         }
     }
 }
