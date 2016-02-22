@@ -8,7 +8,7 @@ namespace CodeforcesAPI
     public enum SubmissionVerdict
     {
         Absent = 0,
-        Failed, Ok, Partial, CompilationError, RuntimeError,
+        Failed, OK, Partial, CompilationError, RuntimeError,
         WrongAnswer, PresentationError, TimeLimitExceeded,
         MemoryLimitExceeded, IdlenessLimitExceeded, SecurityViolated,
         Crashed, InputPreparationCrashed, Challenged, Skipped, Testing, Rejected
