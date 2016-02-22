@@ -11,14 +11,12 @@ namespace APIDebug
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var api = new Codeforces(Langs.EN);
-            foreach (var user in api.User.RatedList(true).Result.
-                Where(x => x.MaxRating > 2600).
-                OrderBy(x => x.MaxRating).
-                Reverse())
-                Console.WriteLine("{0} - {1} ({2})", user.Handle, user.MaxRating, user.MaxRank);
+            var users = api.User.RatedList(true).Result;
+
+            Console.WriteLine(api.User.RatedList(true).Result.Count());
         }
     }
 }
