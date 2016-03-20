@@ -24,7 +24,7 @@ namespace CodeforcesAPI
         /// <summary>
         /// Total ammount of points, scored by the party.
         /// </summary>
-        public float Points { get; set; }
+        public double Points { get; set; }
         /// <summary>
         /// Total penalty (in ICPC meaning) of the party.
         /// </summary>

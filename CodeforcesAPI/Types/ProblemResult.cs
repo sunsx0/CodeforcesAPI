@@ -13,7 +13,7 @@ namespace CodeforcesAPI
     /// </summary>
     public class ProblemResult
     {
-        public float Points { get; set; }
+        public double Points { get; set; }
         /// <summary>
         /// Penalty (in ICPC meaning) of the party for this problem.
         /// </summary>

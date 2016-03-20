@@ -28,7 +28,7 @@ namespace CodeforcesAPI
         /// <summary>
         /// Can be absent. Maximum ammount of points for the problem.
         /// </summary>
-        public float Points { get; set; }
+        public double Points { get; set; }
         /// <summary>
         /// Problem tags.
         /// </summary>
