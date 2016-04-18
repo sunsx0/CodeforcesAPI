@@ -9,13 +9,7 @@ namespace CodeforcesAPI.Methods
     public abstract class MethodsGroup
     {
         public Codeforces Api { get; private set; }
-        public virtual string GroupName
-        {
-            get
-            {
-                throw new NotImplementedException("Name not declarated");
-            }
-        }
+        public abstract string GroupName { get; }
         protected async Task<T> SendWebRequest<T>(string method, Dictionary<string, object> parameters = null)
         {
             return await Api.SendWebRequest<T>(GroupName + "." + method, parameters);

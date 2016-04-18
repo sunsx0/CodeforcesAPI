@@ -52,6 +52,22 @@ namespace CodeforcesAPI.Methods
                 { "contestId", contestId }
             });
         }
+        /* 
+         * Don't work now :(
+         * 
+        /// <summary>
+        /// Returns list of contest-registrants.
+        /// </summary>
+        /// <param name="contestId">Id of the contest. It is not the round number. It can be seen in contest URL. For example: /contest/566/status</param>
+        /// <returns>Returns list of contest-registrants.</returns>
+        public async Task<ContestRegistrant[]> Registrants(int contestId)
+        {
+            return await SendWebRequest<ContestRegistrant[]>("registrants", new Dictionary<string, object>
+            {
+                { "contestId", contestId }
+            });
+        }
+        */
         /// <summary>
         /// Returns the description of the contest and the requested part of the standings.
         /// </summary>

@@ -10,6 +10,7 @@ using CodeforcesAPI.Methods;
 using CodeforcesAPI.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.IO;
 
 namespace CodeforcesAPI
 {
@@ -17,6 +18,7 @@ namespace CodeforcesAPI
     {
         public const string ApiUrl = "http://codeforces.com/api/";
 
+        public BlogEntryMethods BlogEntry { get; private set; }
         public ContestMethods Contest { get; private set; }
         public ProblemSetMethods ProblemSet { get; private set; }
         public UserMethods User { get; private set; }
@@ -26,6 +28,7 @@ namespace CodeforcesAPI
 
         public Codeforces(Langs lang = Langs.EN, ApiKey apiKey = null)
         {
+            BlogEntry = MethodsGroup.Init<BlogEntryMethods>(this);
             Contest = MethodsGroup.Init<ContestMethods>(this);
             ProblemSet = MethodsGroup.Init<ProblemSetMethods>(this);
             User = MethodsGroup.Init<UserMethods>(this);
@@ -43,6 +46,19 @@ namespace CodeforcesAPI
         }
 
         /// <summary>
+        /// Returns recent actions.
+        /// </summary>
+        /// <param name="maxCount">Number of recent actions to return. Can be up to 100.</param>
+        /// <returns>Returns a list of RecentAction objects.</returns>
+        public async Task<RecentAction[]> RecentActions(int maxCount)
+        {
+            return await SendWebRequest<RecentAction[]>("recentActions", new Dictionary<string, object>
+            {
+                { "maxCount", maxCount }
+            });
+        }
+
+        /// <summary>
         /// Call codeforces API.
         /// </summary>
         /// <typeparam name="T">Requeried object</typeparam>
@@ -54,19 +70,23 @@ namespace CodeforcesAPI
             if (parameters == null) parameters = new Dictionary<string, object>();
             
             AddParameters(method, parameters);
-
-            var req = method + "?" + UrlHelper.ToGetRequest(parameters);
-            var uri = new Uri(ApiUrl + req);
-
+            
+            var req = UrlHelper.ToGetRequest(parameters);
+            //var uri = ApiUrl + method; // POST
+            var uri = ApiUrl + method + "?" + req;
 
             using (var client = new HttpClient())
             {
                 ApiResponse<T> responseObject = null;
                 try
                 {
-                    HttpResponseMessage response = await client.GetAsync(uri).ConfigureAwait(false);
-                    responseObject = await response.Content.ReadAsAsync<ApiResponse<T>>().ConfigureAwait(false);
-                    response.EnsureSuccessStatusCode();
+                    /*
+                    var jsonResp = await (await client.PostAsync(uri, new FormUrlEncodedContent(
+                        parameters.Select(x => new KeyValuePair<string, string>(x.Key, x.Value.ToString())))
+                        )).Content.ReadAsStringAsync(); // POST
+                    */
+                    var jsonResp = await client.GetStringAsync(uri);
+                    responseObject = JsonConvert.DeserializeObject<ApiResponse<T>>(jsonResp);      
                 }
                 catch (HttpRequestException)
                 {

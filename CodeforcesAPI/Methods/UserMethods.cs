@@ -17,6 +17,30 @@ namespace CodeforcesAPI.Methods
         }
 
         /// <summary>
+        /// Returns a list of all user's blog entries.
+        /// </summary>
+        /// <param name="handle">Codeforces user handle.</param>
+        /// <returns>A list of BlogEntry objects in short form.</returns>
+        public async Task<BlogEntry[]> BlogEntries(string handle)
+        {
+            return await SendWebRequest<BlogEntry[]>("blogEntries", new Dictionary<string, object>
+            {
+                { "handle", handle }
+            });
+        }
+        /// <summary>
+        /// Returns authorized user's friends. Using this method requires authorization.
+        /// </summary>
+        /// <param name="onlyOnline">If true — only online friends are returned. Otherwise, all friends are returned.</param>
+        /// <returns>Returns a list of strings — users' handles.</returns>
+        public async Task<string[]> Friends(bool onlyOnline = false)
+        {
+            return await SendWebRequest<string[]>("friends", new Dictionary<string, object>
+            {
+                { "onlyOnline", onlyOnline }
+            });
+        }
+        /// <summary>
         /// Returns information about one or several users.
         /// </summary>
         /// <param name="handles">Semicolon-separated list of handles. No more than 10000 handles is accepted.</param>

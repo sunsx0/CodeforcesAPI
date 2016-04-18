@@ -78,6 +78,6 @@ namespace CodeforcesAPI
         /// <summary>
         /// Can be absent.
         /// </summary>
-        public string Reason { get; set; }
+        public string Season { get; set; }
     }
 }

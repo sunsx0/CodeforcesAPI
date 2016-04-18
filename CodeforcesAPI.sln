@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeforcesAPI", "CodeforcesAPI\CodeforcesAPI.csproj", "{B6D8757A-009A-4BAE-8845-AEB820B640B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIDebug", "APIDebug\APIDebug.csproj", "{DFC826BB-91E0-464D-8ACF-7FD19C8FAD58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatingCalculation", "RatingCalculation\RatingCalculation.csproj", "{A442E510-D698-45AB-A41D-8B954955FF5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DFC826BB-91E0-464D-8ACF-7FD19C8FAD58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFC826BB-91E0-464D-8ACF-7FD19C8FAD58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFC826BB-91E0-464D-8ACF-7FD19C8FAD58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A442E510-D698-45AB-A41D-8B954955FF5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A442E510-D698-45AB-A41D-8B954955FF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A442E510-D698-45AB-A41D-8B954955FF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A442E510-D698-45AB-A41D-8B954955FF5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

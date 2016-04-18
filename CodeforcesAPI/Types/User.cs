@@ -82,5 +82,17 @@ namespace CodeforcesAPI
         [JsonConverter(typeof(ExtUnixTimeConverter))]
         [JsonProperty(PropertyName = "registrationTimeSeconds", Required = Required.Default)]
         public DateTime RegistrationTime { get; set; }
+        /// <summary>
+        /// Amount of users who have this user in friends.
+        /// </summary>
+        public int FriendOfCount { get; set; }
+        /// <summary>
+        /// User's avatar URL.
+        /// </summary>
+        public string Avatar { get; set; }
+        /// <summary>
+        /// User's title photo URL.
+        /// </summary>
+        public string TitlePhoto { get; set; }
     }
 }
